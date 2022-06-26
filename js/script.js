@@ -35,7 +35,11 @@ function runGame(gameType) {
         displayAdditionQuestion(num1, num2);
     
     } else if (gameType === "multiply") {
-        displayMultiplyQuestion();
+        displayMultiplyQuestion(num1, num2);
+
+    } else if (gameType === "substract") {
+        displayMultiplyQuestion(num1, num2);
+
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!;`
@@ -79,7 +83,11 @@ function calculareCorrectAnswer() {
         return [operand1 + operand2, "addition"];
     
     } else if (operator === "x") {
-        return [operand1 * operand2, "multiply"];    
+        return [operand1 * operand2, "multiply"];
+        
+    } else if (operator === "-") {
+        return [operand1 - operand2, "substract"];  
+
     } else {
         alert(`Unimplemented operator ${operator}`);
         throw `Unimplemented operator ${operator}. Aborting!`;
@@ -114,11 +122,20 @@ function displayAdditionQuestion(operand1, operand2) {
 
 }
 
-function displaySubstractQuestion() {
 
+// 1. Add the gameType check to runGame()
+// 2. Create the display question function
+// 3. Modify the calculateCorrectAnswer function
+function displaySubstractQuestion(operand1, operand2) {
+    // javascript ternary operator
+    document.getElementById("operand1").textContent = operand1 > operand2 ? operand1 : operand2;
+    // Which is bigger: operand1 or operand2?
+    // If operand1 is bigger, return that.
+    // if operand 2 is bigger, return that instead.
+    // condition ? true part : false part;
 }
 
-function displayMultiplyQuestion(operand1, operan2) {
+function displayMultiplyQuestion(operand1, operand2) {
     document.getElementById('operand1').textContent = operand1;
     document.getElementById('operand2').textContent = operand2;
     document.getElementById('operator').textContent = "x";
